@@ -1,0 +1,102 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                    Silent Lord Scalper FX       |
+//|                                          forexroboteasy.com      |
+//|                                              Forex Robot Easy Team|
+//+------------------------------------------------------------------+
+
+//--- Input parameters
+input double TakeProfit = 100;   //take profit value in pips
+input double StopLoss = 50;      //stop loss value in pips
+
+//--- Global variables
+double TP;     //take profit level
+double SL;     //stop loss level
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    //--- Calculate take profit and stop loss levels based on the input parameters
+    TP = NormalizeDouble(Ask + TakeProfit * Point, Digits);
+    SL = NormalizeDouble(Bid - StopLoss * Point, Digits);
+
+    //--- Print the calculated TP and SL levels
+    Print('Take Profit: ', TP);
+    Print('Stop Loss: ', SL);
+
+    //--- Other initialization tasks
+
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert advisor start function                                     |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    //--- Check if the current bid price is above the TP level
+    if (Bid >= TP)
+    {
+        //--- Close the buy position
+        CloseBuyPosition();
+    }
+
+    //--- Check if the current ask price is below the SL level
+    if (Ask <= SL)
+    {
+        //--- Close the sell position
+        CloseSellPosition();
+    }
+
+    //--- Other trading logic
+}
+
+//+------------------------------------------------------------------+
+//| Close the buy position                                            |
+//+------------------------------------------------------------------+
+void CloseBuyPosition()
+{
+    //--- Close the buy position logic
+}
+
+//+------------------------------------------------------------------+
+//| Close the sell position                                           |
+//+------------------------------------------------------------------+
+void CloseSellPosition()
+{
+    //--- Close the sell position logic
+}
+
+//+------------------------------------------------------------------+
+//| Custom function to calculate and adjust TP and SL levels          |
+//+------------------------------------------------------------------+
+void CalculateTPSL()
+{
+    //--- Calculate and adjust TP and SL levels based on market conditions
+}
+
+//+------------------------------------------------------------------+
+//| Custom function to perform forex market analysis                  |
+//+------------------------------------------------------------------+
+void PerformMarketAnalysis()
+{
+    //--- Perform forex market analysis logic
+}
+
+//+------------------------------------------------------------------+
+//| Custom function to interact with the software's user interface    |
+//+------------------------------------------------------------------+
+void InteractWithUserInterface()
+{
+    //--- Interact with the software's user interface logic
+}
+
+//+------------------------------------------------------------------+
+//| Custom function to provide instructions and documentation         |
+//+------------------------------------------------------------------+
+void ProvideInstructionsAndDocumentation()
+{
+    //--- Provide instructions and documentation logic
+}
